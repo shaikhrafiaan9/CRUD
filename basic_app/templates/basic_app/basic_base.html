@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body class="w3-mobile">
+    <div class="w3-container w3-mobile">
+      <div class="w3-container w3-bar w3-green w3-mobile headr">
+        <a href="{% url 'index' %}" class="w3-bar-item w3-btn w3-text-black w3-hover-text-white w3-mobile">HOME</a>
+        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-btn w3-text-black w3-hover-text-white w3-mobile w3-right">ADMIN</a>
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-btn button w3-mobile">SCHOOL</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="{% url 'basic_app:create' %}" class="w3-bar-item w3-btn w3-hover-green w3-hover-text-white w3-mobile">Create School</a>
+              <a href="{% url 'basic_app:list' %}" class="w3-bar-item w3-btn w3-hover-green w3-hover-text-white w3-mobile">School List</a>
+            </div>
+        </div>
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-btn w3-text-black w3-hover-text-white w3-bar-block w3-card-4 w3-mobile">STUDENT</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-mobile">
+            <a href="{% url 'basic_app:createstudent' %}" class="w3-bar-item w3-btn w3-hover-green w3-hover-text-white w3-mobile">Create Student</a>
+            <a href="{% url 'basic_app:studentlist' %}" class="w3-bar-item w3-btn w3-hover-green w3-hover-text-white w3-mobile">Student List</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    {% block body_block %}
+
+    {% endblock %}
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'basic_app/basic_base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<div class = "w3-container w3-bold w3-card-4 w3-margin w3-mobile w3-padding">
+  <div class="w3-container w3-mobile">
+    <div class="w3-green w3-border w3-margin w3-mobile">
+      <h1 class="w3-center w3-text-black w3-margin w3-mobile">{{school_details.name}} Details</h1>
+    </div>
+    <ul class="w3-ul w3-margin w3-mobile">
+      <table class="w3-table-all w3-mobile">
+        <tr class="w3-green w3-mobile w3-hover-green w3-mobile">
+          <th class>NAME</th>
+          <th>PRINCIPAL NAME</th>
+          <th>SCHOOL LOCATION</th>
+        </tr>
+        <tr>
+          <td>{{school_details.name}}</td>
+          <td>{{school_details.principal}}</td>
+          <td>{{school_details.location}}</td>
+        </tr>
+      </table>
+    </ul>
+    </div>
+    <div class="w3-container w3-mobile">
+      <div class="w3-green w3-border w3-margin w3-mobile">
+        <h1 class="w3-center w3-text-black w3-margin w3-mobile">{{school_details.name}} Students List</h1>
+      </div>
+      <ul class="w3-ul w3-margin w3-mobile">
+        <table class="w3-table-all w3-mobile">
+          <tr class="w3-green w3-mobile w3-hover-green w3-mobile">
+            <th class>NAME</th>
+            <th>PRINCIPAL NAME</th>
+            <th>SCHOOL LOCATION</th>
+            <th></th>
+          </tr>
+          {% for student in school_details.students.all %}
+          <tr>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.school}}</td>
+            <td><a href="{% url 'basic_app:update_student' pk=student.pk %}" class="w3-btn w3-black w3-round-large w3-center w3-mobile">Update Student</a></td>
+          </tr>
+        {% endfor %}
+        </table>
+      </ul>
+      <div class="w3-container w3-center w3-mobile">
+        <h2><a href="{% url 'basic_app:update' pk=school_details.pk %}" class="w3-btn w3-black w3-round-large w3-center w3-mobile">Update School Details</a></h2>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

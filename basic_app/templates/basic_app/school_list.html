@@ -1,0 +1,31 @@
+{% extends 'basic_app/basic_base.html' %}
+{% load static %}
+{% block body_block %}
+
+<br class="w3-mobile">
+<div class="w3-container w3-bold w3-card-4 w3-margin w3-mobile">
+  <div class="w3-green w3-border w3-margin w3-mobile">
+    <h1 class="w3-center w3-text-black w3-margin scl w3-mobile">SCHOOL LIST</h1>
+  </div>
+  <ul class="w3-ul w3-margin w3-mobile">
+    <table class="w3-table-all w3-mobile">
+      <tr class="w3-green w3-mobile w3-hover-green">
+        <th class="w3-center w3-mobile">DETAILS</th>
+        <th class="w3-mobile">UPDATE</th>
+        <th class="w3-mobile">DELETE</th>
+      </tr>
+        {% for school in schools %}
+      <tr class="w3-mobile">
+        <th class="w3-mobile"><a href="{{school.id}}" class="w3-btn w3-bar w3-blue w3-round-large w3-mobile">{{school.name}} Details</a></th>
+        <th class="w3-mobile"><a href="{% url 'basic_app:update' pk=school.pk %}" class="w3-btn w3-black w3-round-large w3-mobile ">UPDATE</a></th>
+        <th class="w3-mobile"><a href="{% url 'basic_app:delete' pk=school.pk %}" class="w3-btn w3-round-large w3-red w3-mobile">DELETE</a></th>
+      </tr>
+      {% endfor %}
+    </table>
+  </ul>
+</div>
+
+
+
+
+{% endblock %}
